@@ -4,8 +4,8 @@ import { GET_WEATHER_QUERY } from '../graphql/queries'
 
 
 
-export const fetchData = async()=> {
-  const variables = {name: "Vancouver"}
+export const fetchData = async(city)=> {
+  const variables = {name: city}
   
   const endpoint = 'https://graphql-weather-api.herokuapp.com/'
 

@@ -14,8 +14,8 @@ import { receiveData } from '../action/countAction';
 
 
 
-function* requestDataAsync() {
-    const data = yield call(fetchData);
+function* requestDataAsync(action) {
+    const data = yield call(fetchData, action.cityName);
     yield put(receiveData(data));
 }
 

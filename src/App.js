@@ -5,19 +5,38 @@ import { requestData } from './redux/action/countAction';
 import { bindActionCreators } from 'redux';
 
 class App extends Component {
-    componentDidMount() {
-        this.props.requestData();
-    }
-    
+  
 
+    constructor(props){
+        super(props)
+        this.state={
+            city:""
+        } 
+
+        
+    }
+
+    handleCity(e){
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
+
+    handleSearch(city){
+        this.props.requestData(city);
+    }
+
+
+    
     render() {
         return (
             <div>
                 <h1>Weather For:</h1>
-{/* 
+
                 <div>
-                    <input type = "text" placeholder="enter city name" onChange={}> </input>
-                </div> */}
+                    <input name="city"  placeholder="enter city name" onChange={(e)=>this.handleCity(e)} />
+                    <button onClick={() => this.handleSearch(this.state.city)} >Search</button>
+                </div> 
 
                 {console.log(this.props.data)}
                 <h2>{this.props.data ?this.props.data.getCityByName.name : null}</h2>
